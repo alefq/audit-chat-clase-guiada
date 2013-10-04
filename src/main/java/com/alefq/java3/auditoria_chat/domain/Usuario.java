@@ -2,18 +2,12 @@ package com.alefq.java3.auditoria_chat.domain;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import com.alefq.java3.auditoria_chat.domain.Rol;
 
 @Entity
 public class Usuario implements Serializable {

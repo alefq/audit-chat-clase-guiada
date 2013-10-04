@@ -4,15 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-
 import javax.persistence.Query;
 
-
 import org.slf4j.Logger;
+import org.ticpy.tekoporu.template.JPACrud;
 
 import com.alefq.java3.auditoria_chat.domain.Usuario;
-
-import org.ticpy.tekoporu.template.JPACrud;
 
 public class UsuarioDAO extends JPACrud<Usuario, Long> {
 	private static final long serialVersionUID = 1L;

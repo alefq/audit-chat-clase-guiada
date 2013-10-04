@@ -4,16 +4,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.ticpy.tekoporu.annotation.PreviousView;
+import org.ticpy.tekoporu.stereotype.ViewController;
+import org.ticpy.tekoporu.template.AbstractEditPageBean;
+import org.ticpy.tekoporu.transaction.Transactional;
+
 import com.alefq.java3.auditoria_chat.business.RolBC;
 import com.alefq.java3.auditoria_chat.business.UsuarioBC;
 import com.alefq.java3.auditoria_chat.domain.Rol;
 import com.alefq.java3.auditoria_chat.domain.Usuario;
 import com.alefq.java3.auditoria_chat.util.HashUtils;
-
-import org.ticpy.tekoporu.annotation.PreviousView;
-import org.ticpy.tekoporu.stereotype.ViewController;
-import org.ticpy.tekoporu.template.AbstractEditPageBean;
-import org.ticpy.tekoporu.transaction.Transactional;
 
 @ViewController
 @PreviousView("/admin/usuario_list.xhtml")

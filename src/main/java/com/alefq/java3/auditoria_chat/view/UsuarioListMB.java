@@ -10,14 +10,14 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
 import org.primefaces.model.LazyDataModel;
-import com.alefq.java3.auditoria_chat.business.UsuarioBC;
-import com.alefq.java3.auditoria_chat.domain.Usuario;
-
 import org.ticpy.tekoporu.annotation.NextView;
 import org.ticpy.tekoporu.annotation.PreviousView;
 import org.ticpy.tekoporu.stereotype.ViewController;
 import org.ticpy.tekoporu.template.AbstractListPageBean;
 import org.ticpy.tekoporu.transaction.Transactional;
+
+import com.alefq.java3.auditoria_chat.business.UsuarioBC;
+import com.alefq.java3.auditoria_chat.domain.Usuario;
 
 @SessionScoped
 @ViewController

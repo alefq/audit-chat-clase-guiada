@@ -1,17 +1,18 @@
 package com.alefq.java3.auditoria_chat.business;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
+import org.ticpy.tekoporu.annotation.Startup;
+import org.ticpy.tekoporu.template.DelegateCrud;
+import org.ticpy.tekoporu.transaction.Transactional;
 
 import com.alefq.java3.auditoria_chat.domain.Rol;
 import com.alefq.java3.auditoria_chat.domain.Usuario;
 import com.alefq.java3.auditoria_chat.persistence.RolDAO;
 import com.alefq.java3.auditoria_chat.persistence.UsuarioDAO;
 import com.alefq.java3.auditoria_chat.util.HashUtils;
-
-import org.ticpy.tekoporu.annotation.Startup;
-import org.ticpy.tekoporu.template.DelegateCrud;
-import org.ticpy.tekoporu.transaction.Transactional;
 
 public class UsuarioBC extends DelegateCrud<Usuario, Long, UsuarioDAO> {
 	private static final long serialVersionUID = 1L;

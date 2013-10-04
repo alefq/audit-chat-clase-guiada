@@ -45,6 +45,8 @@
 
 		<class>com.alefq.java3.auditoria_chat.domain.Bookmark</class>
 		
+			<class>com.alefq.java3.auditoria_chat.domain.ChatAudit</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 			<property name="javax.persistence.jdbc.user" value="sa" />

@@ -10,9 +10,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
-import com.alefq.java3.auditoria_chat.domain.Rol;
-
 import org.ticpy.tekoporu.template.JPACrud;
+
+import com.alefq.java3.auditoria_chat.domain.Rol;
 
 public class RolDAO extends JPACrud<Rol, Long>{
 
