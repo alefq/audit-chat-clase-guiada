@@ -1,24 +1,24 @@
 <html>
 <head>
 	<!-- include primefaces stylesheets -->
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/themes/sam/theme.css.jsf?ln=primefaces&amp;amp;v=2.2.1" />
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/themeswitcher/themeswitcher.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=2.2.1" />
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=2.2.1" />
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/toolbar/toolbar.css.jsf?ln=primefaces&amp;v=2.2.1" />
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/confirmdialog/confirmdialog.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/fieldset/fieldset.css.jsf?ln=primefaces&amp;v=2.2.1" />
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/fieldset/fieldset.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/messages/messages.css.jsf?ln=primefaces&amp;v=2.2.1" />
-	<link type="text/css" rel="stylesheet" href="/auditoria-chat/javax.faces.resource/growl/assets/growl.css.jsf?ln=primefaces&amp;v=2.2.1" />
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/growl/growl.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
-	<script type="text/javascript" src="/auditoria-chat/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/themes/sam/theme.css.jsf?ln=primefaces&amp;amp;v=2.2.1" />
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/themeswitcher/themeswitcher.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=2.2.1" />
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=2.2.1" />
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/toolbar/toolbar.css.jsf?ln=primefaces&amp;v=2.2.1" />
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/confirmdialog/confirmdialog.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/fieldset/fieldset.css.jsf?ln=primefaces&amp;v=2.2.1" />
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/fieldset/fieldset.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/messages/messages.css.jsf?ln=primefaces&amp;v=2.2.1" />
+	<link type="text/css" rel="stylesheet" href="/audit-chat-clase-guiada/javax.faces.resource/growl/assets/growl.css.jsf?ln=primefaces&amp;v=2.2.1" />
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/growl/growl.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
+	<script type="text/javascript" src="/audit-chat-clase-guiada/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=2.2.1"></script>
 	<!-- End include primefaces stylesheets  -->
 
 	<title>Login</title>
@@ -53,7 +53,7 @@
 						<tr>
 							<td>
 								<div class="ui-toolbar-group-right">
-									<button id="j_idt21" name="j_idt21" onclick=" location.href='/auditoria-chat/index.jsf' ">Back</button>									
+									<button id="j_idt21" name="j_idt21" onclick=" location.href='/audit-chat-clase-guiada/index.jsf' ">Back</button>									
 									<script type="text/javascript">widget_j_idt21 = new PrimeFaces.widget.CommandButton('j_idt21', {});</script>
 								</div>
 							</td>

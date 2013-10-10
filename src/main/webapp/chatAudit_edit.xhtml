@@ -1,58 +1,74 @@
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main.xhtml">
 
 	<ui:define name="body">
 		<h:form prependId="false">
 
 			<p:toolbar>
 				<p:toolbarGroup align="left">
-					<p:commandButton value="#{messages['button.save']}" action="#{chatAuditEditMB.insert}"
+					<p:commandButton value="#{messages['button.save']}"
+						action="#{chatAuditEditMB.insert}"
 						rendered="#{!chatAuditEditMB.updateMode}" ajax="false" />
-					<p:commandButton value="#{messages['button.save']}" action="#{chatAuditEditMB.update}"
+					<p:commandButton value="#{messages['button.save']}"
+						action="#{chatAuditEditMB.update}"
 						rendered="#{chatAuditEditMB.updateMode}" ajax="false" />
-					<p:commandButton value="#{messages['button.delete']}" onclick="confirmation.show()"
-						rendered="#{chatAuditEditMB.updateMode}" type="button" immediate="true" ajax="false" />
-					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
-						header="#{messages['label.dialog.delete']}" severity="alert" widgetVar="confirmation">
-						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{chatAuditEditMB.delete}" immediate="true"
-							ajax="false" />
-						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+					<p:commandButton value="#{messages['button.delete']}"
+						onclick="confirmation.show()"
+						rendered="#{chatAuditEditMB.updateMode}" type="button"
+						immediate="true" ajax="false" />
+					<p:confirmDialog message="#{messages['label.confirm.delete']}"
+						showEffect="bounce" hideEffect="explode"
+						header="#{messages['label.dialog.delete']}" severity="alert"
+						widgetVar="confirmation">
+						<h:commandButton value="#{messages['button.dialog.yes']}"
+							action="#{chatAuditEditMB.delete}" immediate="true" ajax="false" />
+						<h:commandButton value="#{messages['button.dialog.no']}"
+							onclick="confirmation.hide()" type="button" />
 					</p:confirmDialog>
 				</p:toolbarGroup>
 			</p:toolbar>
 
 			<br />
 
-			<p:fieldset legend="#{messages['chatAudit.label']}" toggleable="true" toggleSpeed="500">
+			<p:fieldset legend="#{messages['chatAudit.label']}" toggleable="true"
+				toggleSpeed="500">
 				<h:panelGrid id="fields" columns="3">
-					
-					<h:outputLabel value="#{messages['chatAudit.label.chatAuditId']}: " for="chatAuditId" styleClass="text-input" />
-					<h:inputText id="chatAuditId" value="#{chatAuditEditMB.bean.chatAuditId}"
-						title="#{messages['chatAudit.alt.chatAuditId']}" />
-					<p:message for="chatAuditId" />
-					
-					<h:outputLabel value="#{messages['chatAudit.label.fecha']}: " for="fecha" styleClass="text-input" />
+
+					<h:outputLabel value="#{messages['chatAudit.label.fecha']}: "
+						for="fecha" styleClass="text-input" />
 					<h:inputText id="fecha" value="#{chatAuditEditMB.bean.fecha}"
-						title="#{messages['chatAudit.alt.fecha']}" />
+						title="#{messages['chatAudit.alt.fecha']}">
+						<!--  Asignamos un converter con el pattern que queremos utilizar para el ingreso de fechas -->
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText>
 					<p:message for="fecha" />
-					
-					<h:outputLabel value="#{messages['chatAudit.label.nickname']}: " for="nickname" styleClass="text-input" />
+
+					<h:outputLabel value="#{messages['chatAudit.label.nickname']}: "
+						for="nickname" styleClass="text-input" />
 					<h:inputText id="nickname" value="#{chatAuditEditMB.bean.nickname}"
 						title="#{messages['chatAudit.alt.nickname']}" />
 					<p:message for="nickname" />
-					
-					<h:outputLabel value="#{messages['chatAudit.label.numeroIp']}: " for="numeroIp" styleClass="text-input" />
+
+					<h:outputLabel value="#{messages['chatAudit.label.numeroIp']}: "
+						for="numeroIp" styleClass="text-input" />
 					<h:inputText id="numeroIp" value="#{chatAuditEditMB.bean.numeroIp}"
-						title="#{messages['chatAudit.alt.numeroIp']}" />
+						title="#{messages['chatAudit.alt.numeroIp']}">
+						<f:validator
+							validatorId="py.edu.uca.edw.java3.auditoria_chat.view.validator.IpV4Validator" />
+					</h:inputText>
 					<p:message for="numeroIp" />
-					
-					<h:outputLabel value="#{messages['chatAudit.label.texto']}: " for="texto" styleClass="text-input" />
+
+					<h:outputLabel value="#{messages['chatAudit.label.texto']}: "
+						for="texto" styleClass="text-input" />
 					<h:inputText id="texto" value="#{chatAuditEditMB.bean.texto}"
 						title="#{messages['chatAudit.alt.texto']}" />
 					<p:message for="texto" />
-					
+
 				</h:panelGrid>
 			</p:fieldset>
 		</h:form>

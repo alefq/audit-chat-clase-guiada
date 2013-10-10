@@ -8,11 +8,11 @@
 	<persistence-unit name="auditoriachatPU" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>java:/chatDS</non-jta-data-source>
 		
-		<class>com.alefq.java3.auditoria_chat.domain.Bookmark</class>
-		<class>com.alefq.java3.auditoria_chat.domain.Rol</class>
-		<class>com.alefq.java3.auditoria_chat.domain.Usuario</class>
-		<class>com.alefq.java3.auditoria_chat.domain.ChatAudit</class>
-		<class>com.alefq.java3.auditoria_chat.domain.ConexionAudit</class>
+		<class>py.edu.uca.edw.java3.auditoria_chat.domain.Bookmark</class>
+		<class>py.edu.uca.edw.java3.auditoria_chat.domain.Rol</class>
+		<class>py.edu.uca.edw.java3.auditoria_chat.domain.Usuario</class>
+		<class>py.edu.uca.edw.java3.auditoria_chat.domain.ChatAudit</class>
+		<class>py.edu.uca.edw.java3.auditoria_chat.domain.ConexionAudit</class>
 
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
