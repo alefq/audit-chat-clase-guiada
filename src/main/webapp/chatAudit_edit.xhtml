@@ -41,11 +41,9 @@
 
 					<h:outputLabel value="#{messages['chatAudit.label.fecha']}: "
 						for="fecha" styleClass="text-input" />
-					<h:inputText id="fecha" value="#{chatAuditEditMB.bean.fecha}"
-						title="#{messages['chatAudit.alt.fecha']}">
-						<!--  Asignamos un converter con el pattern que queremos utilizar para el ingreso de fechas -->
-						<f:convertDateTime pattern="dd-MM-yyyy" />
-					</h:inputText>
+					<p:calendar id="fecha" value="#{chatAuditEditMB.bean.fecha}"
+						title="#{messages['chatAudit.alt.fecha']}" pattern="dd-MM-yyyy"></p:calendar>
+
 					<p:message for="fecha" />
 
 					<h:outputLabel value="#{messages['chatAudit.label.nickname']}: "

@@ -53,7 +53,7 @@
 					<h:commandLink action="#{chatAuditListMB.getNextView}"
 						actionListener="#{chatAuditListMB.clear}">
 						<h:outputText value="#{bean.fecha}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 						</h:outputText>
 						<f:param name="id" value="#{bean.chatAuditId}" />
 					</h:commandLink>

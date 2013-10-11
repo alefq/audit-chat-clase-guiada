@@ -38,7 +38,7 @@ public class UrlConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) {
-		return value.toString();
+		return "Ir a: " + value.toString();
 	}
 
 }

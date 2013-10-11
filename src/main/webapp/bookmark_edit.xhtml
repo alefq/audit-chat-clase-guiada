@@ -52,7 +52,9 @@
 						for="link" styleClass="text-input" />
 					<h:inputText id="link" value="#{bookmarkEditMB.bean.link}"
 						title="#{messages['bookmark.alt.link']}">
-						<f:converter converterId="py.edu.uca.edw.java3.auditoria_chat.view.converter.UrlConverter" />
+						<!-- Aquí le indicamos que utilize el converter UrlConverter para la edición/alta -->
+						<f:converter
+							converterId="py.edu.uca.edw.java3.auditoria_chat.view.converter.UrlConverter" />
 					</h:inputText>
 					<p:message for="link" />
 				</h:panelGrid>
