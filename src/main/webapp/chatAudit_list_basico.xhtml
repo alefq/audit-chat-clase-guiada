@@ -1,0 +1,44 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+			<p:dataTable id="list" var="bean"
+				value="#{chatAuditListMB.resultList}">
+				<!-- columna simple -->
+				<p:column>
+					<h:outputText value="#{bean.nickname}" />
+				</p:column>
+
+				<!-- columna con un commandLink para ir a la edición -->
+				<p:column>
+					<!-- el commandlink envía a la vista que devuelve el "getNextView" parametrizado con el annotation @NextView en el ViewController -->
+					<h:commandLink action="#{chatAuditListMB.getNextView}"
+						actionListener="#{chatAuditListMB.clear}">
+						<h:outputText value="#{bean.numeroIp}">
+						</h:outputText>
+						<!-- Aquí se le pasa de parámetro la pk de la tabla que está siendo listada, esto toma el ViewController que extiende de AbstractListPageBean-->
+						<f:param name="id" value="#{bean.chatAuditId}" />
+					</h:commandLink>
+				</p:column>
+
+				<!-- columna con ordenamiento y header -->
+				<p:column sortBy="#{bean.texto}">
+					<f:facet name="header">#{messages['chatAudit.label.texto']}</f:facet>
+					<h:commandLink action="#{chatAuditListMB.getNextView}"
+						actionListener="#{chatAuditListMB.clear}">
+						<h:outputText value="#{bean.texto}" />
+						<f:param name="id" value="#{bean.chatAuditId}" />
+					</h:commandLink>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
