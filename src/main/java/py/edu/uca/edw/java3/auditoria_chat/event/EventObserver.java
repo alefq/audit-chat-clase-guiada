@@ -1,6 +1,7 @@
 package py.edu.uca.edw.java3.auditoria_chat.event;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -29,15 +30,25 @@ public class EventObserver implements Serializable {
 
 	@AccessTimeout(value = 1, unit = TimeUnit.MINUTES)
 	public void observe(@Observes TestEvent event) {
-		/* Cada vez que se dispare un evento TestEvent ingresará aquí */
+		/*
+		 * Utilizando el pattern "Event/Observer" Cada vez que se dispare un
+		 * evento TestEvent ingresará aquí
+		 */
 		initContext();
 		if ("five".equals(event.getMessage())) {
 			/* cuando el mensaje de evento sea "five" */
-			logger.info("¡Evento *five* recibido!");
+			logger.info("¡Evento *** five *** recibido!");
+			/* Actualizamos el tiempo al que ingresa al Observer */
+			event.setLastAutomaticTimeout(new Date());
+			logger.info("El evento five fue generado: "
+					+ event.getLastAutomaticTimeout());
 		}
 		closeContext();
 	}
 
+	/**
+	 * Se inicializa el contexto para el CDI
+	 * */
 	private void initContext() {
 
 		BoundRequestContext context = Container.instance().deploymentManager()
@@ -47,6 +58,9 @@ public class EventObserver implements Serializable {
 		context.activate();
 	}
 
+	/**
+	 * Se cierra el contexto para el CDI
+	 * */
 	private void closeContext() {
 
 		if (context != null && context.isActive()) {

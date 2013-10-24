@@ -31,19 +31,31 @@
 					</p:confirmDialog>
 				</p:toolbarGroup>
 			</p:toolbar>
-			<h:panelGrid columns="2">
-				<h:column>
-					<h:outputLabel value="#{messages['chatAudit.label.nickname'] }"
-						for="filterLink" />
-					<h:inputText id="filterLink"
-						value="#{chatAuditListMB.chatAuditFilter.nickname}" />
-				</h:column>
-				<h:column>
-					<p:commandButton value="Filtrar"
-						action="#{chatAuditListMB.handleFilteredResultList()}"
-						update="wrapper"></p:commandButton>
-				</h:column>
-			</h:panelGrid>
+			<p:outputPanel id="panelFiltros">
+				<h:panelGrid columns="4">
+					<h:column>
+						<h:outputLabel value="#{messages['chatAudit.label.nickname'] }"
+							for="filterLink" />
+						<h:inputText id="filterLink"
+							value="#{chatAuditListMB.chatAuditFilter.nickname}" />
+					</h:column>
+					<h:column>
+						<h:outputLabel value="#{messages['chatAudit.label.numeroIp'] }"
+							for="filterLink2" />
+						<h:inputText id="filterLink2"
+							value="#{chatAuditListMB.chatAuditFilter.numeroIp}" />
+					</h:column>
+					<h:column>
+						<p:commandButton value="Filtrar"
+							action="#{chatAuditListMB.handleFilteredResultList}"
+							update="wrapper"></p:commandButton>
+					</h:column>
+					<h:column>
+						<p:commandButton action="#{chatAuditListMB.resetFilters}"
+							value="Limpiar filtros" update="panelFiltros"></p:commandButton>
+					</h:column>
+				</h:panelGrid>
+			</p:outputPanel>
 			<!-- Este outputPanel le da capacidad de recagar por ajax su contenido -->
 			<p:outputPanel id="wrapper">
 				<p:dataTable id="list" var="bean"

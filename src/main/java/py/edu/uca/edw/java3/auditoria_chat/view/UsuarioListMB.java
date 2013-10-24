@@ -19,44 +19,49 @@ import org.ticpy.tekoporu.transaction.Transactional;
 import py.edu.uca.edw.java3.auditoria_chat.business.UsuarioBC;
 import py.edu.uca.edw.java3.auditoria_chat.domain.Usuario;
 
-
 @SessionScoped
 @ViewController
 @NextView("/admin/usuario_edit.xhtml")
 @PreviousView("/admin/usuario_list.xhtml")
-public class UsuarioListMB extends AbstractListPageBean<Usuario, Long>{
+public class UsuarioListMB extends AbstractListPageBean<Usuario, Long> {
 
 	private static final long serialVersionUID = 1L;
-	
-	private LazyDataModel<Usuario> model;	
-	private int pageSize = 2;
-	
+
+	/*
+	 * Este model se utiliza para poder hacer el paginado en el ejemplo que
+	 * realiza la paginación vía Base de Datos
+	 */
+	private LazyDataModel<Usuario> model;
+	/*El tamaño que tendrá cada página de las grillas*/
+	private int pageSize = 4;
+
 	@Inject
 	private UsuarioBC userBC;
-	
+
 	@SuppressWarnings("serial")
 	@PostConstruct
 	public void loadLazyModel() {
 		model = new LazyDataModel<Usuario>() {
 
 			@Override
-			public List<Usuario> load(int first, int pageSize, String sortField,
-					boolean sortOrder, Map<String, String> filters) {
-					
-					if(sortField == null) sortField = "usuarioId"; //default sort field
-				
-					List<Usuario> user = new ArrayList<Usuario>();
-					user = userBC.findPage(pageSize, first, sortField, sortOrder);
-				
-					return user;
+			public List<Usuario> load(int first, int pageSize,
+					String sortField, boolean sortOrder,
+					Map<String, String> filters) {
+
+				if (sortField == null)
+					sortField = "usuarioId"; // default sort field
+
+				List<Usuario> user = new ArrayList<Usuario>();
+				user = userBC.findPage(pageSize, first, sortField, sortOrder);
+
+				return user;
 			}
 		};
-		
+
 		model.setRowCount(userBC.count());
 		model.setPageSize(pageSize);
 	}
 
-	
 	@Override
 	protected List<Usuario> handleResultList() {
 		return this.userBC.listarUsuarios();
@@ -65,7 +70,8 @@ public class UsuarioListMB extends AbstractListPageBean<Usuario, Long>{
 	@Transactional
 	public String deleteSelection() {
 		boolean delete;
-		for (Iterator<Long> iter = getSelection().keySet().iterator(); iter.hasNext();) {
+		for (Iterator<Long> iter = getSelection().keySet().iterator(); iter
+				.hasNext();) {
 			Long id = iter.next();
 			delete = getSelection().get(id);
 
@@ -76,16 +82,15 @@ public class UsuarioListMB extends AbstractListPageBean<Usuario, Long>{
 		}
 		return getPreviousView();
 	}
-	
-	public LazyDataModel<Usuario> getModel() {
-	    return model;
-	}
-	
-	public int getPageSize() {
-		
-		return this.pageSize;
-		
-	}
-	
-}
 
+	public LazyDataModel<Usuario> getModel() {
+		return model;
+	}
+
+	public int getPageSize() {
+
+		return this.pageSize;
+
+	}
+
+}

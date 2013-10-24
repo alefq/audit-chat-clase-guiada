@@ -1,6 +1,7 @@
 package py.edu.uca.edw.java3.auditoria_chat.view;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,6 +32,11 @@ public class EventMB extends AbstractListPageBean<ChatAudit, Long> implements
 		return null;
 	}
 
+	public Date getLastAutomaticTimeout() {
+		return eventBC.getLastAutomaticTimeout(); 
+	}
+
+	
 
 	@Override
 	protected List<ChatAudit> handleResultList() {

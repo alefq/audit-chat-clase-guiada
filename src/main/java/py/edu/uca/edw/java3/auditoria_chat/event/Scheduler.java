@@ -18,6 +18,8 @@ package py.edu.uca.edw.java3.auditoria_chat.event;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
@@ -30,6 +32,7 @@ import javax.ejb.TimerService;
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
+
 import org.slf4j.Logger;
 
 /**
@@ -51,11 +54,39 @@ public class Scheduler {
 	@Inject
 	private BeanManager beanManager;
 
-	public void scheduleEvent(ScheduleExpression schedule, Object event,
-			Annotation ... qualifiers) {
+	private Date lastAutomaticTimeout;
 
+	public void scheduleEvent(ScheduleExpression schedule, Object event,
+			Annotation... qualifiers) {
+		/*
+		 * TimerService es la interface de JEE6 que determina el comportamiento
+		 * que tendrán las tareas que se pueden ejecutar de forma asíncrona
+		 */
 		timerService.createCalendarTimer(schedule, new TimerConfig(
 				new EventConfig(event, qualifiers), false));
+	}
+
+	@Timeout
+	private void timeout(Timer timer) {
+		/*
+		 * Cada vez que se cumpla el periodo (5 seg. en el ejemplo) se dispará
+		 * el método que esté anotadi con @Timeout
+		 */
+		final EventConfig config = (EventConfig) timer.getInfo();
+		TestEvent evento = (TestEvent) config.getEvent();
+		logger.info("Timeout: " + timer);
+		/* Se dispara el evento que vino como parte del Timer */
+		event.fire(evento);
+		setLastAutomaticTimeout(evento.getLastAutomaticTimeout());
+		// beanManager.fireEvent(config.getEvent(), config.getQualifiers());
+	}
+
+	public Date getLastAutomaticTimeout() {
+		return lastAutomaticTimeout;
+	}
+
+	public void setLastAutomaticTimeout(Date lastAutomaticTimeout) {
+		this.lastAutomaticTimeout = lastAutomaticTimeout;
 	}
 
 	// Doesn't actually need to be serializable, just has to implement it

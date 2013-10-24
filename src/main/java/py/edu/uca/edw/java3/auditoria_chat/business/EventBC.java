@@ -1,6 +1,7 @@
 package py.edu.uca.edw.java3.auditoria_chat.business;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import javax.ejb.AccessTimeout;
@@ -35,9 +36,14 @@ public class EventBC implements Serializable {
 		/* Iniciamos una tarea que correrá cada 5 segundos */
 		final ScheduleExpression schedule = new ScheduleExpression().hour("*")
 				.minute("*").second("*/5");
+		TestEvent evento = new TestEvent("five");
 		/* Se disparará un evento con el texto "five" */
-		scheduler.scheduleEvent(schedule, new TestEvent("five"));
+		scheduler.scheduleEvent(schedule, evento);
 		return null;
+	}
+
+	public Date getLastAutomaticTimeout() {
+		return scheduler.getLastAutomaticTimeout();
 	}
 
 }

@@ -1,37 +1,48 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!--
-
-    Copyright (c) 2013 Oracle and/or its affiliates. All rights reserved.
-
-    You may not modify, use, reproduce, or distribute this software except in
-    compliance with  the terms of the License at:
-    http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
-
--->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<body>
-	<ui:composition template="/timer.xhtml">
-		<ui:define name="title">
-                Timer page
-            </ui:define>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main.xhtml">
+	<ui:define name="body">
+		<h:form id="idFormAutoRefresh">
+			<!-- Rodeamos en un p:outputPanel para recargar vía ajax -->
+			<p:outputPanel id="idPanelTimer">
+				<p>The last automatic timeout was:
+					#{eventMB.lastAutomaticTimeout}</p>
+			</p:outputPanel>
+			<!-- Esto refresca "idPanelTimer" cada 5 segundos -->
+			<p:poll interval="5" update="idPanelTimer"></p:poll>
+		</h:form>
+		<p>Set a programmatic timer here.</p>
+		<h:form>
+			<!-- Este botón inicia un evento que es ejecutado en forma asíncrona mediante un EJB -->
+			<h:commandButton value="Set Timer" action="#{eventMB.setTimer}" />
+			<h:commandButton value="Refresh" action="timer-client" />
+			<hr />
+			<h:panelGrid columns="2">
+				<h:column>
+					<h:outputLabel for="idPrecio">Precio IVA incluído:</h:outputLabel>
+					<h:inputText id="idPrecio" value="#{chatAuditListMB.precio}">
+						<f:convertNumber integerOnly="true" type="number" locale="es_PY" />
+					</h:inputText>
+				</h:column>
+				<h:column>
+					<p:commandButton value="Filtrar" action="#{chatAuditListMB.list()}"
+						update="wrapper"></p:commandButton>
+				</h:column>
+			</h:panelGrid>
+			<!-- Este outputPanel le da capacidad de recagar por ajax su contenido -->
+			<p:outputPanel id="wrapper">
+				<h:panelGrid columns="2">
+					<h:outputText value="I.V.A.: " />
+					<h:outputText value="#{chatAuditListMB.iva}">
+						<f:convertNumber integerOnly="true" type="number" locale="es_PY" />
+					</h:outputText>
+				</h:panelGrid>
+			</p:outputPanel>
+		</h:form>
 
-		<ui:define name="body">
-			<p>The last programmatic timeout was:
-				#{timerManager.lastProgrammaticTimeout}.</p>
-
-			<p>The last automatic timeout was:
-				#{timerManager.lastAutomaticTimeout}</p>
-
-			<p>Set a programmatic timer here.</p>
-			<h:form>
-				<h:commandButton value="Set Timer" action="#{eventMB.setTimer}" />
-				<h:commandButton value="Refresh" action="timer-client" />
-			</h:form>
-		</ui:define>
-	</ui:composition>
-</body>
-</html>
+	</ui:define>
+</ui:composition>
 
