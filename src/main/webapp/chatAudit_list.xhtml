@@ -61,7 +61,8 @@
 				<p:dataTable id="list" var="bean"
 					value="#{chatAuditListMB.resultList}">
 					<f:facet name="header">#{messages['chatAudit.list.table.title']}</f:facet>
-					<p:column style="width:1%;">
+					<p:column style="width:1%;"
+						rendered="#{chatAuditUiController.hasRole('admin')}">
 						<h:selectBooleanCheckbox
 							value="#{chatAuditListMB.selection[bean.chatAuditId]}"></h:selectBooleanCheckbox>
 					</p:column>

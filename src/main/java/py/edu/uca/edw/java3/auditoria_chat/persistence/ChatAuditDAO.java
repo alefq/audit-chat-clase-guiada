@@ -67,14 +67,23 @@ public class ChatAuditDAO extends JPACrud<ChatAudit, Long> {
 		list = crit.list();
 		return list;
 	}
-	
+
 	public Double calcularIva(Double precio) {
 		/* Ejemplo de llamada a un procedimiento almacenado/función */
 		Double iva = new Double(0);
-        String sSQL = "select iva FROM calcular_iva( :precio)";
-        Query nativeQuery = entityManager.createNativeQuery(sSQL);
-        nativeQuery.setParameter("precio", precio);
-        iva = (Double) nativeQuery.getSingleResult();
+		// String sSQL =
+		// "select iva FROM calcular_iva( :precio, :codigoProducto)";
+		String sSQL = "select iva FROM calcular_iva( :precio)";
+		Query nativeQuery = entityManager.createNativeQuery(sSQL);
+		nativeQuery.setParameter("precio", precio);
+		// nativeQuery.setParameter("codigoProducto", "A123");
+		iva = (Double) nativeQuery.getSingleResult();
+		/*
+		 * cuando es un resultado que devuelte lista de valores se utiliza
+		 * getResultList
+		 */
+
+		// nativeQuery.getResultList();
 		return iva;
 	}
 
